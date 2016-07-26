@@ -1,13 +1,13 @@
 [Unit]
 Description=Run services using ephemeral disk
-Requires=ephemeral-list.service ephemeral-disk.service ephemeral-data.mount docker.socket docker.service
-After=ephemeral-list.service ephemeral-disk.service ephemeral-data.mount
+Requires=ephemeral-list.service ephemeral-disk.service mnt-data.mount docker.socket docker.service
+After=ephemeral-list.service ephemeral-disk.service mnt-data.mount
 Before=docker.socket docker.service
 ConditionPathIsMountPoint=/mnt/data
 
 [Install]
 WantedBy=local-fs.target
-RequiredBy=ephemeral-list.service ephemeral-disk.service ephemeral-data.mount docker.socket docker.service
+RequiredBy=ephemeral-list.service ephemeral-disk.service mnt-data.mount docker.socket docker.service
 
 [Service]
 Type=oneshot

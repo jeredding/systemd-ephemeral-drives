@@ -1,7 +1,7 @@
 [Unit]
 Description=Setup ephemeral disk
-Requires=ephemeral-list.service ephemeral-data.mount ephemeral-units.service
-Before=ephemeral-data.mount ephemeral-units.service
+Requires=ephemeral-list.service mnt-data.mount ephemeral-units.service
+Before=mnt-data.mount ephemeral-units.service
 After=ephemeral-list.service
 ConditionPathIsMountPoint=!/mnt/data
 
