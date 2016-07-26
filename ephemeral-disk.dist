@@ -2,7 +2,7 @@
 ENABLE_MD=0
 
 # RAID level
-MD_LEVEL=1
+MD_LEVEL=0
 
 # RAID device
 MD_DEVICE=/dev/md0
