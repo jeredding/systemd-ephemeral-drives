@@ -16,7 +16,8 @@ If you have multiple ephemeral disks, you can use software RAID to increase IO p
 
 ## ephemeral-disk
 
-This script prepares the ephemeral disks of an EC2 instance at each system boot by creating a swap partition (if enabled in configuration) and a data partition wich will be mounted in the directory */mnt/data*. If the partitions are already created, nothing is done except mounting them. After mounting, the service starts by dependency all required services.
+This script prepares the ephemeral disks of an EC2 instance at each system boot by creating a swap partition (if enabled in configuration)
+and a data partition wich will be mounted in the directory */mnt/data*. If the partitions are already created, nothing is done except mounting them. After mounting, the service starts by dependency all required services.
 
 LVM is used like this:
 * a LVM volume group *ephemeral* of all disks
@@ -43,13 +44,8 @@ Start the ephemeral disk services:
 
     # make enable
     # make start
-
-Check that swap and data partitions are created and mounted:
-
-    # cat /proc/swaps
-    # free -m
     # lvs
-    # cd /ephemeral/data
+    # cd /mnt/data
 
 To be sure verify your bootorder after a system restart:
 

@@ -1,5 +1,5 @@
 [Unit]
-Description=Mount ephemeral data partition
+Description=Mount ephemeral data partition to /mnt/data
 Requires=ephemeral-list.service ephemeral-disk.service ephemeral-units.service
 Before=ephemeral-units.service
 After=ephemeral-list.service ephemeral-disk.service
