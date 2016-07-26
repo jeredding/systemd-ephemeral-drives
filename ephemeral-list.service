@@ -1,0 +1,13 @@
+[Unit]
+Description=Write ephemeral disk list
+Requires=ephemeral-data.mount ephemeral-units.service
+Before=ephemeral-data.mount ephemeral-units.service
+ConditionPathIsMountPoint=!/mnt/data
+
+[Install]
+WantedBy=local-fs.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/bash /etc/ephemeral-scripts/ephemeral-list.sh

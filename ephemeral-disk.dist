@@ -1,0 +1,35 @@
+# enable RAID
+ENABLE_MD=0
+
+# RAID level
+MD_LEVEL=1
+
+# RAID device
+MD_DEVICE=/dev/md0
+
+# RAID chunk size in kbytes
+MD_CHUNK=64
+
+# Configuration file of mdadm
+MD_CONFIG=/etc/mdadm/mdadm.conf
+
+# VG name
+VG_NAME=ephemeral
+
+# LV name of data
+LV_DATA=data
+
+# LV extents of data
+LV_DATA_EXTENTS=99%FREE
+
+# filesystem type
+MOUNT_FSTYPE=xfs
+
+# mount options
+MOUNT_OPTIONS="defaults,pquota,prjquota,discard"
+
+# mountpoint
+MOUNT_PATH=/mnt/data
+
+# destroy on stop
+DESTROY_ON_STOP=0

@@ -1,0 +1,16 @@
+[Unit]
+Description=Run services using ephemeral disk
+Requires=ephemeral-list.service ephemeral-disk.service ephemeral-data.mount # ADD YOUR DEPENDENCIES HERE
+After=ephemeral-list.service ephemeral-disk.service ephemeral-data.mount
+Before=# ADD YOUR DEPENDENCIES HERE
+ConditionPathIsMountPoint=/mnt/data
+
+[Install]
+WantedBy=local-fs.target
+RequiredBy=ephemeral-list.service ephemeral-disk.service ephemeral-data.mount # ADD YOUR DEPENDENCIES HERE
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
+ExecStop=/bin/true
