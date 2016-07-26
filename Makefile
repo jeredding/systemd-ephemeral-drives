@@ -8,11 +8,11 @@ install:
 	install -m 750 ephemeral-disk_start.sh /etc/ephemeral-scripts/
 	install -m 750 ephemeral-disk_stop.sh /etc/ephemeral-scripts/
 	install -m 750 ephemeral-list.sh /etc/ephemeral-scripts/
-	install ephemeral-list.service /etc/systemd/system/
-	install ephemeral-disk.service /etc/systemd/system/
-	install mnt-data.mount /etc/systemd/system/
-	install ephemeral-units.service /etc/systemd/system/
-	install  ephemeral-disk /etc/default/
+	install -m 644 ephemeral-list.service /etc/systemd/system/
+	install -m 644 ephemeral-disk.service /etc/systemd/system/
+	install -m 644 mnt-data.mount /etc/systemd/system/
+	install -m 644 ephemeral-units.service /etc/systemd/system/
+	install -m 644 ephemeral-disk /etc/default/
 	systemctl daemon-reload
 
 .PHONY: uninstall
