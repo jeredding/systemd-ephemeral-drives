@@ -14,3 +14,5 @@ RemainAfterExit=yes
 ExecStart=/bin/bash /etc/ephemeral-scripts/ephemeral-disk_start.sh
 TimeoutStartSec=300
 ExecStop=/bin/bash /etc/ephemeral-scripts/ephemeral-disk_stop.sh
+
+StandardOutput=journal+console

@@ -20,6 +20,11 @@ IFS=${oldIFS}
 disks_list=${disks_list## }
 partitions_list=${partitions_list## }
 
+[[ "x${disks_list[*]}" == "x" ]] && {
+    echo "no disks detected by ephemeral-disk_start.sh"
+    exit 1
+}
+
 LV_DISK="/dev/${VG_NAME}/${LV_DATA}"
 
 if [ ! -b "${LV_DISK}" ]; then

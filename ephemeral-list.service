@@ -11,3 +11,5 @@ WantedBy=local-fs.target
 Type=oneshot
 RemainAfterExit=yes
 ExecStart=/bin/bash /etc/ephemeral-scripts/ephemeral-list.sh
+
+StandardOutput=journal+console
