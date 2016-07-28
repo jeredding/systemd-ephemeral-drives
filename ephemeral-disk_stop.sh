@@ -8,11 +8,13 @@ set -e
 
 disks_list=""
 partitions_list=""
+partitions_count=0
 oldIFS=${IFS}
 IFS=','
 for disk in ${DISKS}; do
     disks_list="${disks_list} ${disk}"
     partitions_list="${partitions_list} ${disk}1"
+    partitions_count=$((partitions_count + 1))
 done
 IFS=${oldIFS}
 disks_list=${disks_list## }
@@ -27,7 +29,7 @@ if [ "${DESTROY_ON_STOP}" -eq "1" ]; then
     echo "Removing LVM VG ${VG_NAME} ..."
     vgremove -f "${VG_NAME}"
 
-    if [ "${ENABLE_MD}" -eq "1" ]; then
+    if [ "${partitions_count}" -eq "1" ]; then
         echo "Removing LVM PV ${MD_DEVICE} ..."
         pvremove -f "${MD_DEVICE}"
 

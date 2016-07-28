@@ -31,7 +31,7 @@ if [ ! -b "${LV_DISK}" ]; then
         parted --script "${disk}" mklabel gpt
         parted --script --align optimal "${disk}" mkpart primary ext2 2048s 100%
 
-        if [ "${ENABLE_MD}" -eq "1" ]; then
+        if [ "${partitions_count}" -gt 1 ]; then
             echo "Enabling partition RAID flag ..."
             parted --script "${disk}" set 1 raid on
         else
@@ -43,7 +43,7 @@ if [ ! -b "${LV_DISK}" ]; then
     echo "Probing partitions ..."
     partprobe
 
-    if [ "${ENABLE_MD}" -eq "1" ]; then
+    if [ "${partitions_count}" -gt 1 ]; then
         echo "Creating MD device /dev/md0 ..."
         yes | mdadm --create "${MD_DEVICE}" --level="${MD_LEVEL}" --chunk="${MD_CHUNK}" --raid-devices="${partitions_count}" ${partitions_list[*]}
 
